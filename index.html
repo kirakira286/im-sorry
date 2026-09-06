@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Mohitha — I'm Sorry ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;color:#49343d;
+  background:linear-gradient(135deg,#fff8fb,#fff0f5 45%,#f9f1ff);
+  min-height:100vh;overflow-x:hidden;overflow-y:auto;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(circle at 15% 20%,rgba(255,255,255,.9),transparent 30%),
+             radial-gradient(circle at 85% 80%,rgba(255,220,235,.45),transparent 30%);
+}
+button{font:inherit}
+section{position:relative;z-index:2;min-height:100vh;padding:90px 20px;display:flex;align-items:center;justify-content:center}
+.container{width:min(920px,100%);text-align:center}
+h1,h2{font-family:'Playfair Display',serif}
+.script{font-family:'Caveat',cursive}
+h1{font-size:clamp(3rem,10vw,6.5rem);line-height:.95;margin-bottom:20px}
+h2{font-size:clamp(2.2rem,6vw,4rem);margin-bottom:18px}
+p{line-height:1.8;font-size:1.04rem}
+.small{opacity:.72;font-size:.9rem}
+.btn{
+ border:0;border-radius:999px;padding:15px 26px;cursor:pointer;
+ background:#7c5266;color:white;box-shadow:0 10px 28px rgba(93,55,73,.18);
+ transition:.3s transform,.3s box-shadow;
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 15px 32px rgba(93,55,73,.25)}
+.glass{
+ background:rgba(255,255,255,.68);backdrop-filter:blur(14px);
+ border:1px solid rgba(255,255,255,.9);box-shadow:0 20px 60px rgba(111,66,88,.1);
+ border-radius:28px;padding:35px;
+}
+#hero{min-height:100vh}
+.hero-heart{font-size:4rem}
+@keyframes pulse{50%{transform:scale(1.12)}}
+.fade{opacity:0;transform:translateY(30px);transition:1s ease}
+.fade.show{opacity:1;transform:none}
+
+#petals{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+.petal{position:absolute;top:-30px;animation:fall linear forwards;opacity:.75}
+@keyframes fall{
+  0%{transform:translateY(-30px) rotate(0deg);opacity:0}
+  10%{opacity:.8}100%{transform:translateY(110vh) rotate(520deg);opacity:0}
+}
+.letter{max-width:720px;margin:auto;text-align:left;background:#fffdf8;padding:45px 38px;border-radius:8px;box-shadow:0 18px 45px rgba(72,44,49,.12);position:relative}
+.letter:before{content:"";position:absolute;inset:12px;border:1px solid #eadbd5;pointer-events:none}
+.letter p{font-family:'Caveat',cursive;font-size:1.55rem;line-height:1.45;margin:15px 0}
+.signature{font-family:'Caveat',cursive;font-size:2rem;text-align:right;margin-top:25px}
+
+.reasons{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:30px}
+.reason{
+ padding:20px 15px;background:rgba(255,255,255,.72);border-radius:20px;
+ box-shadow:0 8px 22px rgba(90,50,70,.07);text-align:left;
+ opacity:0;transform:translateY(18px);transition:.5s;
+}
+.reason.show{opacity:1;transform:none}
+.reason b{display:block;font-family:'Caveat',cursive;font-size:1.5rem;margin-bottom:4px}
+
+.memories{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.photo{
+ aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#f7e8ee;
+ border:8px solid white;box-shadow:0 12px 28px rgba(80,45,60,.13);
+ display:flex;align-items:center;justify-content:center;
+}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo span{font-family:'Caveat',cursive;font-size:1.5rem;opacity:.65;padding:15px}
+
+.envelope-wrap{perspective:1000px;margin:30px auto;max-width:500px}
+.envelope{height:290px;position:relative;cursor:pointer;transform-style:preserve-3d}
+.env-body{position:absolute;inset:35px 0 0;background:#ead1da;border-radius:12px;box-shadow:0 18px 40px rgba(80,45,60,.18)}
+.flap{
+ position:absolute;left:0;right:0;top:35px;margin:auto;width:0;height:0;
+ border-left:250px solid transparent;border-right:250px solid transparent;
+ border-top:150px solid #d6aebb;transform-origin:top;transition:1s;z-index:3;
+}
+.seal{position:absolute;z-index:5;left:50%;top:125px;transform:translateX(-50%);
+ width:58px;height:58px;border-radius:50%;background:#9b667b;color:white;
+ display:flex;align-items:center;justify-content:center;font-size:25px;transition:.6s}
+.envelope.open .flap{transform:rotateX(180deg);z-index:1}
+.envelope.open .seal{opacity:0;transform:translate(-50%,-20px)}
+.final-letter{display:none;margin-top:25px}
+.final-letter.open{display:block;animation:appear 1s ease}
+@keyframes appear{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}
+
+.progress{height:5px;background:#eadce2;border-radius:10px;margin:20px auto;max-width:500px;overflow:hidden}
+.progress span{display:block;width:0;height:100%;background:#9b667b;transition:1s}
+@media(max-width:650px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  section{width:100%;max-width:100%;overflow:hidden}
+  .container{min-width:0}
+  .reasons{width:100%;min-width:0}
+
+  section{min-height:auto;padding:55px 14px;align-items:flex-start}
+  .container{width:100%;max-width:100%}
+  h1{font-size:clamp(3rem,16vw,5rem)}
+  h2{font-size:clamp(2rem,10vw,3rem)}
+  p{font-size:.98rem}
+  .btn{padding:14px 20px;max-width:100%}
+  .glass{width:100%;padding:24px 17px}
+  .reasons{
+    grid-template-columns:1fr;
+    gap:12px;
+    width:100%;
+  }
+  .reason{
+    width:100%;
+    min-width:0;
+    padding:17px 15px;
+    font-size:.95rem;
+    overflow-wrap:anywhere;
+  }
+  .reason b{font-size:1.35rem}
+  #reasons .container{width:100%}
+  .progress{width:100%;margin:18px auto}
+  .memories{grid-template-columns:1fr 1fr;gap:10px}
+  .letter{width:100%;padding:32px 20px}
+  .letter p{font-size:1.35rem}
+  .envelope-wrap{width:100%;overflow:hidden}
+  .envelope{width:100%;height:250px}
+  .env-body{width:100%}
+  .flap{
+    border-left-width:44vw;
+    border-right-width:44vw;
+    border-top-width:130px
+  }
+}
+
+/* Ensure the 100 apologies are always visible on mobile */
+@media(max-width:650px){
+  #reasons .reason{opacity:1;transform:none}
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div id="petals"></div>
+
+
+
+<section id="hero">
+ <div class="container fade">
+   <div class="hero-heart">♡</div>
+   <div class="script" style="font-size:2rem">For Mohitha...</div>
+   <h1>I'm Sorry.</h1>
+   <p style="max-width:650px;margin:0 auto 28px">
+     I know a simple “sorry” can't undo everything.<br>
+     So I made this little place to say what I couldn't properly say in words.
+   </p>
+   <button class="btn" onclick="go('apology')">Please hear me out 🥺</button>
+ </div>
+</section>
+
+<section id="apology">
+ <div class="container fade">
+  <h2>I know I hurt you.</h2>
+  <div class="glass">
+   <p>
+    Mohitha, I know you've reached a point where you feel like you can't tolerate
+    all of this anymore, and I understand why you're hurt. I'm not going to make
+    excuses or tell you that you should forgive me.
+   </p>
+   <br>
+   <p>
+    I messed up. I hurt someone who means a lot to me, and I'm genuinely sorry
+    for that. I wish I could go back and handle things differently, but I can't
+    change what already happened.
+   </p>
+   <br>
+   <p>
+    What I <i>can</i> do is take responsibility, learn from it, respect your
+    feelings, and show you through my actions that I mean this apology.
+   </p>
+  </div>
+  <br><button class="btn" onclick="go('reasons')">My Apologies →</button>
+ </div>
+</section>
+
+
+
+<section id="reasons" style="scroll-margin-top:0;">
+ <div class="container fade">
+  <h2>100 reasons I'm sorry</h2>
+  <p class="small">Not 100 excuses. Just 100 little reminders of what I regret and what you mean to me.</p>
+  <div class="progress"><span id="bar"></span></div>
+  <div class="reasons" id="reasonsGrid"></div>
+ </div>
+</section>
+
+
+
+<section id="final">
+ <div class="container fade">
+  <h2>Open my letter</h2>
+  <p>Whenever you're ready.</p>
+  <div class="envelope-wrap">
+   <div class="envelope" id="envelope" onclick="openLetter()">
+    <div class="env-body"></div>
+    <div class="flap"></div>
+    <div class="seal">♥</div>
+   </div>
+  </div>
+  <div class="final-letter" id="finalLetter">
+   <div class="letter">
+    <p>Mohitha,</p>
+    <p>
+     I know I can't undo what happened with a website, a hundred reasons,
+     or even a thousand apologies.
+    </p>
+    <p>
+     And I know you don't owe me forgiveness. I don't want to pressure you
+     into giving it to me either.
+    </p>
+    <p>
+     I just want you to know that I'm truly sorry for hurting you.
+     You are important to me, and I'm sorry that my actions made you feel otherwise.
+    </p>
+    <p>
+     I don't want to prove this with promises that disappear after a few days.
+     I want to prove it by being better, by listening, by respecting your feelings,
+     and by not repeating the things that hurt you.
+    </p>
+    <p>
+     Take whatever time you need. Be angry if you need to be. Be distant if you
+     need to be. I'll respect that.
+    </p>
+    <p>
+     I just hope that someday, if you're comfortable, I can earn back the trust
+     and closeness that I damaged.
+    </p>
+    <p>I'm really, really sorry, Mohitha. ❤️</p>
+    <div class="signature">— From someone who genuinely doesn't want to lose your friendship.</div>
+   </div>
+   <br>
+   <p class="script" style="font-size:2rem">No pressure. No expectations. Just a sincere apology. ❤️</p>
+  </div>
+ </div>
+</section>
+
+<script>
+const reasons = [
+"I’m sorry I hurt you.",
+"I’m sorry I made you feel like your feelings didn't matter.",
+"I’m sorry for the moments I made you uncomfortable.",
+"I’m sorry I didn't think enough about how my actions would affect you.",
+"I’m sorry for making things harder than they needed to be.",
+"I’m sorry I didn't listen properly.",
+"I’m sorry for every moment you felt disappointed in me.",
+"I’m sorry I gave you another reason to be upset.",
+"I’m sorry for not handling things maturely.",
+"I’m sorry for the things I should have said differently.",
+"I’m sorry for the things I shouldn't have said at all.",
+"I’m sorry I didn't understand your side sooner.",
+"I’m sorry I focused on my own feelings instead of yours.",
+"I’m sorry for making you feel exhausted.",
+"I’m sorry for putting our friendship through unnecessary stress.",
+"I’m sorry I didn't protect the trust between us.",
+"I’m sorry for taking your patience for granted.",
+"I’m sorry for every time I made you question my intentions.",
+"I’m sorry I wasn't the friend you needed in that moment.",
+"I’m sorry for making you feel unheard.",
+"I’m sorry for making you feel unappreciated.",
+"I’m sorry for every awkward silence I caused.",
+"I’m sorry for every tear or sadness I contributed to.",
+"I’m sorry for making you wish things were different.",
+"I’m sorry I didn't stop and think before acting.",
+"I’m sorry for letting a bad moment become a bigger problem.",
+"I’m sorry I didn't communicate better.",
+"I’m sorry for not realizing the impact of my behavior.",
+"I’m sorry for making you feel like you had to tolerate too much.",
+"I’m sorry for crossing a line.",
+"I’m sorry for not respecting your feelings enough.",
+"I’m sorry for every little thing that added to your hurt.",
+"I’m sorry I didn't notice sooner that you were reaching your limit.",
+"I’m sorry I made you feel like you had to explain yourself repeatedly.",
+"I’m sorry I didn't make things easier for you.",
+"I’m sorry for the stress I caused.",
+"I’m sorry for the frustration I caused.",
+"I’m sorry for the disappointment I caused.",
+"I’m sorry for making you angry.",
+"I’m sorry for making you sad.",
+"I’m sorry for making you feel distant from me.",
+"I’m sorry for damaging something I value.",
+"I’m sorry for not treating our friendship with enough care.",
+"I’m sorry I forgot that words can stay with someone.",
+"I’m sorry I didn't choose my words carefully.",
+"I’m sorry for every misunderstanding I made worse.",
+"I’m sorry for reacting instead of understanding.",
+"I’m sorry for not giving your feelings enough space.",
+"I’m sorry for expecting things to be okay too quickly.",
+"I’m sorry for wanting a quick fix to something that needed understanding.",
+"I’m sorry if my apology came later than it should have.",
+"I’m sorry for making you feel alone in a situation I helped create.",
+"I’m sorry I didn't show you enough respect in that moment.",
+"I’m sorry for every second you spent feeling hurt because of me.",
+"I’m sorry for making our friendship feel heavy.",
+"I’m sorry for making you question whether I cared.",
+"I’m sorry because you deserved better from me.",
+"I’m sorry because our friendship deserves better than this.",
+"I’m sorry because you matter to me.",
+"I’m sorry because your feelings matter to me.",
+"I’m sorry because I should have known better.",
+"I’m sorry because I want to learn from this.",
+"I’m sorry because I don't want to repeat the same mistake.",
+"I’m sorry because saying sorry is the least I can do.",
+"I’m sorry for every moment I wish I could redo.",
+"I’m sorry for every choice I wish I could change.",
+"I’m sorry for every word I wish I could take back.",
+"I’m sorry for every time I made things worse.",
+"I’m sorry for not being more thoughtful.",
+"I’m sorry for not being more patient.",
+"I’m sorry for not being more understanding.",
+"I’m sorry for not being more careful with your trust.",
+"I’m sorry for not recognizing the value of peace between us.",
+"I’m sorry for making you feel like forgiveness was expected.",
+"I’m sorry if I ever made you feel pressured.",
+"I’m sorry for not realizing that you needed space.",
+"I’m sorry for not giving you enough space sooner.",
+"I’m sorry for every boundary I failed to notice.",
+"I’m sorry for every boundary I failed to respect.",
+"I’m sorry for making you carry feelings I should have taken responsibility for.",
+"I’m sorry for expecting you to be okay when you weren't.",
+"I’m sorry for thinking an apology could instantly fix everything.",
+"I’m sorry for underestimating how deeply this affected you.",
+"I’m sorry for not understanding the seriousness sooner.",
+"I’m sorry for every time I put my pride before our friendship.",
+"I’m sorry for every time I defended myself instead of simply listening.",
+"I’m sorry for making you feel like you had to fight to be understood.",
+"I’m sorry for not being the friend I want to be.",
+"I’m sorry for letting you down.",
+"I’m sorry for hurting someone I genuinely care about.",
+"I’m sorry for risking a friendship that means so much to me.",
+"I’m sorry for making you feel like I didn't value you.",
+"I’m sorry for every moment I wish I could give back.",
+"I’m sorry I can't change the past.",
+"I’m sorry that words can't fully explain how much I regret it.",
+"I’m sorry that this happened at all.",
+"I’m sorry, Mohitha.",
+"I’m genuinely sorry.",
+"I’ll respect your feelings.",
+"I’ll give you the time you need.",
+"I’ll work on myself instead of just making promises.",
+"I hope one day I can earn back your trust."
+];
+
+const grid=document.getElementById('reasonsGrid');
+reasons.forEach((r,i)=>{
+ const d=document.createElement('div'); d.className='reason';
+ d.innerHTML=`<b>#${String(i+1).padStart(3,'0')}</b>${r}`;
+ grid.appendChild(d);
+});
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('show');
+      if(e.target.id==='reasons'){
+        document.getElementById('bar').style.width='100%';
+        document.querySelectorAll('.reason').forEach(x=>x.classList.add('show'));
+      }
+    }
+  });
+},{threshold:.01,rootMargin:'0px 0px 100px 0px'});
+document.querySelectorAll('.fade, #reasons').forEach(x=>observer.observe(x));
+
+function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+function openLetter(){
+ document.getElementById('envelope').classList.add('open');
+ setTimeout(()=>document.getElementById('finalLetter').classList.add('open'),700);
+ for(let i=0;i<25;i++) setTimeout(makePetal,i*45);
+}
+function makePetal(){
+ const p=document.createElement('div');p.className='petal';
+ p.textContent=Math.random()>.45?'♥':'✿';
+ p.style.left=Math.random()*100+'vw';
+ p.style.fontSize=(12+Math.random()*18)+'px';
+ p.style.setProperty('--drift',(Math.random()*180-90)+'px');
+ p.style.animationDuration=(5+Math.random()*6)+'s';
+ document.getElementById('petals').appendChild(p);
+ setTimeout(()=>p.remove(),12000);
+}
+setInterval(makePetal,700);
+</script>
+</body>
+</html>
